@@ -27,19 +27,15 @@ cidade= {
         this.map.addTilesetImage('homem','guardaHomem');
         this.map.addTilesetImage('mulher','guardaMulher');  
 
-        this.layer = this.map.createLayer(0);
-        this.collidelayer = this.map.createLayer(1);
+        this.layer = this.map.createLayer('baixo');
+        this.collidelayer = this.map.createLayer('collidelayer');
         
         this.layer.resizeWorld();
         this.collidelayer.resizeWorld();
 
         this.map.setCollisionBetween(0,500,true,this.collidelayer);
 
-        this.npcs = this.map.createLayer(2);
-        
-        this.npcs.resizeWorld();
-        
-
+       
         this.player = new Player('hero', 700 ,1400);
         
         //  Here we create our coins group
@@ -48,12 +44,12 @@ cidade= {
 
         // 000
         this.map.createFromObjects('npcs', 702, 'guardaHomem', 1, true, false, coins);
-
+        this.map.createFromObjects('npcs', 690, 'guardaMulher', 1, true, false, coins);
     
 
 
 
-        this.cima = this.map.createLayer(3);
+        this.cima = this.map.createLayer('cima');
         
         this.cima.resizeWorld();
         
@@ -62,6 +58,7 @@ cidade= {
 
     update: function() {
         game.physics.arcade.collide(this.player, this.collidelayer,function(p,l){console.log('yee')});
+        game.physics.arcade.collide(this.player, coins);
 
        
     },
