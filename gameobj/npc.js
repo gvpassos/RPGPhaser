@@ -1,16 +1,16 @@
 var NpcGuardas  = function(map)
 {
-    coins = game.add.group();
-    coins.enableBody = true;
+    guard = game.add.group();
+    guard.enableBody = true;
 
         // 000
-    map.createFromObjects('npcs', 702, 'guardaHomem', 1, true, false, coins);
-    map.createFromObjects('npcs', 690, 'guardaMulher', 1, true, false, coins);
+    map.createFromObjects('npcs', 702, 'guardaHomem', 1, true, false, guard);
+    map.createFromObjects('npcs', 690, 'guardaMulher', 1, true, false, guard);
     
-    coins.callAll('body.immobable',);
+    guard.setAll('body.immovable', true);
 
 
-    
+    return guard;
     
 
 }

@@ -1,11 +1,15 @@
-var coins;
-cidade= {
-
+var key1,
+    tiggerInteracao,
+    falasJSON;
+cidade = {
     preload: function() {
+        game.load.json('falas', 'data/json/falas.json');
         game.load.tilemap('cidade', 'data/json/cidade.json', null, Phaser.Tilemap.TILED_JSON);
 
         game.load.image('city_outside', 'data/tileds/city_outside.png');
         game.load.image('floresta', 'data/tileds/2rdi8gz.png');
+
+        game.load.image('balao', 'data/ui/balao.png');
 
         game.load.spritesheet('hero', 'data/player/player.png',32,32,12);
 
@@ -17,8 +21,10 @@ cidade= {
     },
     create: function() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
-
-
+        key1 = game.input.keyboard.addKey(Phaser.Keyboard.Z);
+        tiggerInteracao = true;
+        falasJSON = game.cache.getJSON('falas');
+        
         this.map = game.add.tilemap('cidade');
 
         this.map.addTilesetImage('city_outside');
@@ -38,15 +44,8 @@ cidade= {
        
         this.player = new Player('hero', 700 ,1400);
         
-        //  Here we create our coins group
-        coins = game.add.group();
-        coins.enableBody = true;
-
-        // 000
-        this.map.createFromObjects('npcs', 702, 'guardaHomem', 1, true, false, coins);
-        this.map.createFromObjects('npcs', 690, 'guardaMulher', 1, true, false, coins);
-    
-
+        this.npcs = game.add.group();
+        this.npcs.add(NpcGuardas(this.map));
 
 
         this.cima = this.map.createLayer('cima');
@@ -57,14 +56,16 @@ cidade= {
     },
 
     update: function() {
-        game.physics.arcade.collide(this.player, this.collidelayer,function(p,l){console.log('yee')});
-        game.physics.arcade.collide(this.player, coins);
+        game.physics.arcade.collide(this.player, this.collidelayer);
+        game.physics.arcade.collide(this.player, this.npcs.children[0]);
+        game.physics.arcade.overlap(this.player.children[0], this.npcs.children[0],interacao);
 
        
     },
     render:function()
     {
-        game.debug.body(this.player);
+        //game.debug.body(this.player);
+        //game.debug.body(this.player.children[0]);
 
     }
 
@@ -72,3 +73,15 @@ cidade= {
 }
 
 
+function interacao(player,npc)
+{
+    console.log('oh ye');
+    if(key1.isDown && tiggerInteracao)
+    {
+        console.log(tiggerInteracao);
+        balaoDialogo(eval("falasJSON."+npc.key));
+
+        tiggerInteracao = false;
+
+    }else if(key1.isUp) tiggerInteracao = true;
+}
