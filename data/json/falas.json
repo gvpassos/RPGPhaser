@@ -1,10 +1,12 @@
 {
-	"guardaHomem":"Como posso ajudar ?",
-	"guardaMulher":"Como posso ajudar,cidadao ?",
-	"vendedorHomem":"Bom dia, os melhores preços da cidade!! ?",
-	"vendedorMulher":"Bom dia, Gostaria de ver o mostruario ?",
-	"mercadonegro":"Se nao vai comprar de o fora ",
-	"cidadaoA":["Bom dia","esta um otimo dia mesmo"],
-	"cidadaoB":"Nos concemos",
-	"cidadaoA":"De o Fora, nao tenho tempo para voce"
+	"guardaHomem": "Como posso ajudar ?",
+	"guardaMulher": "Como posso ajudar,cidadao ?",
+	"vendedorHomem": "Bom dia, os melhores preços da cidade!! ?",
+	"vendedorMulher": "Bom dia, Gostaria de ver o mostruario ?",
+	"cidadaoA": [
+		"Bom dia",
+		"esta um otimo dia mesmo"
+	],
+	"cidadaoB": "Nos concemos",
+	"cidadaoC": "De o Fora, nao tenho tempo para voce"
 }

@@ -136,8 +136,6 @@ casa7 = {
         //this.cima = this.map.createLayer('cima');
         
         //this.cima.resizeWorld();
-        
-
     },
 
     update: function() {
@@ -145,6 +143,7 @@ casa7 = {
         //game.physics.arcade.collide(this.player, this.npcs.children[0]);
         //game.physics.arcade.overlap(this.player.children[0], this.npcs.children[0],interacao);
         game.physics.arcade.overlap(this.player, this.saida,interacao);
+
        
     },
     render:function()

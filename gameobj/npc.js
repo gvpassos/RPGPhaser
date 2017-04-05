@@ -55,10 +55,9 @@ NpcVendedores = function (map) {
     }
 
     return guard;
-
 }
 
-NpcSaida =function (map,lugar) {
+var NpcSaida =function (map,lugar) {
     guard = game.add.group();
     guard.enableBody = true;
 

@@ -66,6 +66,7 @@ Player.prototype.update = function()
 
 // interacoes //
 var style = { font: "48px finalf", fill: "#000", align: "center"},
+
     bDialogo = 0;
     bDialogo.alive = false;
 function balaoDialogo(fala)
