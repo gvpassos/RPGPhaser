@@ -1,8 +1,10 @@
-
+var playerStart = {x:0,y:0,frame:10};
 
 var Player  = function(sprite,x,y)
 {
-	Phaser.Sprite.call(this, game, x, y, sprite,10);
+    if(playerStart.x == 0 && playerStart.y ==0)
+	    Phaser.Sprite.call(this, game, x, y, sprite,10);
+    else Phaser.Sprite.call(this, game, playerStart.x, playerStart.y, sprite,playerStart.frame);
 
     this.anchor.setTo(0.5, 0.5);
 
@@ -31,43 +33,46 @@ Player.prototype.update = function()
 {
 
     this.body.velocity.x = 0;
-    this.body.velocity.y = 0;   
+    this.body.velocity.y = 0;
 
-    deltaTime = (game.time.elapsedMS / 100 );
-    speed = 1000* deltaTime;
+    if(!bDialogo.alive){
+        deltaTime = (game.time.elapsedMS / 100 );
+        speed = 1000* deltaTime;
 
-	if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
-    {
-        this.body.velocity.x -= speed;
-        this.animations.play('left');
-    }
-    else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
-    {
-        this.body.velocity.x += speed;
-        this.animations.play('right');
-    }
+        if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+        {
+            this.body.velocity.x -= speed;
+            this.animations.play('left');
+        }
+        else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+        {
+            this.body.velocity.x += speed;
+            this.animations.play('right');
+        }
 
-    else if (game.input.keyboard.isDown(Phaser.Keyboard.UP))
-    {
-        this.body.velocity.y  -= speed;
-        this.animations.play('back');
+        else if (game.input.keyboard.isDown(Phaser.Keyboard.UP))
+        {
+            this.body.velocity.y  -= speed;
+            this.animations.play('back');
+        }
+        else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN))
+        {
+            this.body.velocity.y += speed ;
+            this.animations.play('front');
+        }
     }
-    else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN))
-    {
-        this.body.velocity.y += speed ;
-        this.animations.play('front');
-    }    
 }
 
 
 // interacoes //
-var style = { font: "48px Arial", fill: "#ffffff", align: "center"},
+var style = { font: "48px finalf", fill: "#000", align: "center"},
     bDialogo = 0;
     bDialogo.alive = false;
 function balaoDialogo(fala)
 {
     if(bDialogo.alive){
         bDialogo.kill(); 
+        return true;
     }else { 
         bDialogo = game.add.sprite(400,500,'balao');
         bDialogo.anchor.setTo(0.5);
@@ -81,6 +86,6 @@ function balaoDialogo(fala)
         text.anchor.set(0.5);
 
         bDialogo.addChild(text);
-
+        return false;
     }    
 }
