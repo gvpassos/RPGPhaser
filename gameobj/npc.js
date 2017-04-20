@@ -5,8 +5,8 @@ NpcGuardas  = function(map)
     guard.enableBody = true;
 
         // 000
-    map.createFromObjects('npcs', 702, 'guardaHomem', 1, true, false, guard);
-    map.createFromObjects('npcs', 690, 'guardaMulher', 1, true, false, guard);
+    map.createFromObjects('npcs', 2914, 'guardaHomem', 1, true, false, guard);
+    map.createFromObjects('npcs', 2902, 'guardaMulher', 1, true, false, guard);
     
     guard.setAll('body.immovable', true);
 
@@ -21,8 +21,9 @@ NpcPortas  = function(map)
     guard.enableBody = true;
 
         // 000
-    map.createFromObjects('npcs', 46, 'city_outside', 46, true, false, guard);
-    map.createFromObjects('npcs', 139, 'city_outside', 139, true, false, guard);
+    map.createFromObjects('npcs', 1454, 'city_outside', 46, true, false, guard);  
+    map.createFromObjects('npcs', 1742, 'city_outside', 333, true, false, guard);  
+     
     
     guard.setAll('body.immovable', true);
 
@@ -41,9 +42,9 @@ NpcVendedores = function (map) {
     guard.enableBody = true;
 
     // 000
-    map.createFromObjects('npcs', 714, 'vendedorMulher', 1, true, false, guard);
-    map.createFromObjects('npcs', 726, 'vendedorHomem', 1, true, false, guard);
-    map.createFromObjects('npcs', 738, 'mercadonegro', 1, true, false, guard);
+    map.createFromObjects('npcs', 2890, 'vendedorMulher', 1, true, false, guard);
+    map.createFromObjects('npcs', 2878, 'vendedorHomem', 1, true, false, guard);
+    map.createFromObjects('npcs', 2866, 'mercadonegro', 1, true, false, guard);
 
     guard.setAll('body.immovable', true);
 

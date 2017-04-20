@@ -20,6 +20,8 @@ var Player  = function(sprite,x,y)
 
     this.addChild(int);
 
+    
+
     game.physics.arcade.enable(this);
     game.camera.follow(this);
 
@@ -60,6 +62,9 @@ Player.prototype.update = function()
             this.body.velocity.y += speed ;
             this.animations.play('front');
         }
+
+        //menu 
+
     }
 }
 
@@ -89,4 +94,34 @@ function balaoDialogo(fala)
         bDialogo.addChild(text);
         return false;
     }    
+}
+
+
+
+// interacoes com o player
+
+function interacao(player,npc)//quando a um botao a ser precionado 
+{
+    console.log('oh ye');
+    if(key1.isDown && tiggerInteracao)
+    {
+        
+        if (npc.key.match(/guarda.*/)) balaoDialogo(eval("falasJSON."+npc.key));
+        else if(npc.name.match(/casa.*/)) game.state.start(npc.name);
+        else if(npc.name.match(/vendedor.*/) || npc.name.match(/mercadon.*/)) {
+            if(balaoDialogo(eval("falasJSON."+npc.key))){
+                console.log("ue cade a loja");
+            }
+        }
+
+        tiggerInteracao = false;
+
+    }else if(key1.isUp) tiggerInteracao = true;
+}
+function autoInteracao(player,npc)// quando nao ha um botao a ser pressionado 
+{
+    if(npc.name.match(/saida.*/)){
+
+        game.state.start(npc.name.split('saida')[1]);
+    }
 }

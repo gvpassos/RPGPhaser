@@ -11,7 +11,8 @@
 
 	
  <!-- Game Files -->
-
+ 	<script type="text/javascript" src='gameobj\item.js'></script>
+ 	<script type="text/javascript" src='gameobj\interface.js'></script>
  	<script type="text/javascript" src='gameobj\player.js'></script>
  	<script type="text/javascript" src='gameobj\npc.js'></script>
 <!-- Game fases -->
@@ -20,9 +21,11 @@
 
 	<script type="text/javascript">
 
-			game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', 'cidade');
+			var game = new Phaser.Game(800, 600, Phaser.AUTO, 'RPGGAME');
 			game.state.add('cidade',cidade);
             game.state.add('casa7',casa7);
+            game.state.add('casa0',casa0);
+            game.state.add('casa1',casa1);
 
 			game.state.start('cidade');
 	</script>
