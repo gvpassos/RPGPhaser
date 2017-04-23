@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="../data/tileds/interior.png" trans="ffffff" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="257" name="city_inside" tilewidth="32" tileheight="32" tilecount="384" columns="24">
+  <image source="../data/tileds/city_inside.png" trans="ffffff" width="768" height="512"/>
+ </tileset>
+ <tileset firstgid="641" name="city_outside" tilewidth="32" tileheight="32" tilecount="432" columns="24">
+  <image source="../data/tileds/city_outside.png" trans="ffffff" width="768" height="576"/>
+ </tileset>
+ <tileset firstgid="1073" name="paredestile" tilewidth="32" tileheight="32" tilecount="128" columns="16">
+  <image source="../data/tileds/paredestile.png" trans="ffffff" width="512" height="256"/>
+ </tileset>
+ <tileset firstgid="1201" name="celianna" tilewidth="32" tileheight="32" tilecount="420" columns="15">
+  <image source="../data/tileds/celianna.png" trans="ffffff" width="490" height="898"/>
+ </tileset>
+ <layer name="baixo" width="15" height="10">
+  <data encoding="csv">
+1171,1171,1171,290,290,290,290,290,290,290,290,290,290,290,290,
+1187,1187,1187,290,290,290,290,290,290,290,290,290,290,290,290,
+290,290,290,290,290,290,290,290,290,290,290,290,290,290,290,
+290,290,290,290,290,290,290,290,290,290,290,290,290,290,290,
+290,290,290,290,290,290,290,290,290,290,290,290,290,290,290,
+290,290,290,290,290,290,290,290,290,290,290,290,290,290,290,
+290,290,290,290,290,290,290,290,290,290,290,290,290,290,290,
+290,290,290,290,290,290,290,290,290,290,290,290,290,290,290,
+290,290,290,290,290,290,290,290,290,290,290,290,290,290,290,
+290,290,290,290,290,290,290,290,290,290,290,290,290,290,290
+</data>
+ </layer>
+ <layer name="colllidelayer" width="15" height="10">
+  <data encoding="csv">
+1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,
+1187,1187,1187,1187,1187,1187,1187,1187,1187,1187,1187,1187,1187,1187,1187,
+1610613875,146,147,113,114,115,116,117,0,0,0,0,0,0,0,
+1610613875,130,131,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613875,146,147,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613875,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613875,130,131,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613875,146,147,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613875,130,131,70,70,70,70,0,161,0,0,0,0,0,0,
+1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171,1171
+</data>
+ </layer>
+ <objectgroup name="npcs"/>
+ <layer name="cima" width="15" height="10">
+  <data encoding="csv">
+1610613907,0,0,0,0,0,0,104,0,0,0,162,43,0,0,
+1610613907,130,131,97,98,99,100,101,58,59,0,0,0,0,0,
+1610613907,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613907,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613907,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613907,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613907,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613907,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1610613907,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

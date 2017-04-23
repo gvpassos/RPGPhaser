@@ -5,11 +5,14 @@ NpcGuardas  = function(map)
     guard.enableBody = true;
 
         // 000
-    map.createFromObjects('npcs', 2914, 'guardaHomem', 1, true, false, guard);
-    map.createFromObjects('npcs', 2902, 'guardaMulher', 1, true, false, guard);
+    map.createFromObjects('npcs', 2902, 'guardaHomem', 1, true, false, guard);
+    map.createFromObjects('npcs', 2914, 'guardaMulher', 1, true, false, guard);
     
     guard.setAll('body.immovable', true);
 
+    for (var i=0;i < guard.children.length; i++) {
+        guard.children[i].name = 'guarda'+ i;
+    }
 
     return guard;
     

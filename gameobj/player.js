@@ -37,7 +37,6 @@ Player.prototype.update = function()
     this.body.velocity.x = 0;
     this.body.velocity.y = 0;
 
-    if(!bDialogo.alive){
         deltaTime = (game.time.elapsedMS / 100 );
         speed = 1000* deltaTime;
 
@@ -64,59 +63,28 @@ Player.prototype.update = function()
         }
 
         //menu 
-
-    }
 }
-
-
-// interacoes //
-var style = { font: "48px finalf", fill: "#000", align: "center"},
-
-    bDialogo = 0;
-    bDialogo.alive = false;
-function balaoDialogo(fala)
-{
-    if(bDialogo.alive){
-        bDialogo.kill(); 
-        return true;
-    }else { 
-        bDialogo = game.add.sprite(400,500,'balao');
-        bDialogo.anchor.setTo(0.5);
-        bDialogo.scale.setTo(0.5,0.3);
-
-        bDialogo.fixedToCamera = true;
-
-
-
-        text = game.add.text(0, 0, fala, style);
-        text.anchor.set(0.5);
-
-        bDialogo.addChild(text);
-        return false;
-    }    
-}
-
-
 
 // interacoes com o player
 
 function interacao(player,npc)//quando a um botao a ser precionado 
 {
-    console.log('oh ye');
+    //console.log('oh ye');
     if(key1.isDown && tiggerInteracao)
     {
-        
-        if (npc.key.match(/guarda.*/)) balaoDialogo(eval("falasJSON."+npc.key));
-        else if(npc.name.match(/casa.*/)) game.state.start(npc.name);
-        else if(npc.name.match(/vendedor.*/) || npc.name.match(/mercadon.*/)) {
-            if(balaoDialogo(eval("falasJSON."+npc.key))){
-                console.log("ue cade a loja");
-            }
-        }
-
+        criarConversa(npc,0);
+        game.paused = true;
         tiggerInteracao = false;
 
     }else if(key1.isUp) tiggerInteracao = true;
+}
+function entrada(player,npc){
+    if(key1.isDown && tiggerInteracao)
+    {
+         if(npc.name.match(/casa.*/))
+            game.state.start(npc.name);
+    }else if(key1.isUp) tiggerInteracao = true;
+   
 }
 function autoInteracao(player,npc)// quando nao ha um botao a ser pressionado 
 {
@@ -125,3 +93,16 @@ function autoInteracao(player,npc)// quando nao ha um botao a ser pressionado
         game.state.start(npc.name.split('saida')[1]);
     }
 }
+
+
+
+function openInterface(){
+    if(key2.isDown && tiggerInteracao)
+    {
+        carregarInterface();
+
+    }else if(key2.isUp) tiggerInteracao = true;
+}
+
+// fora do Game
+

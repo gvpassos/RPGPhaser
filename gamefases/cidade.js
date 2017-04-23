@@ -1,4 +1,4 @@
-var key1,travaMenu,
+var key1,key2,travaMenu,
     tiggerInteracao,
     falasJSON;
 /// CIDADE //////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +35,7 @@ var cidade = {
     create: function() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.Z);
+        key2 = game.input.keyboard.addKey(Phaser.Keyboard.X);
         tiggerInteracao = true;
         travaMenu = true;
         falasJSON = game.cache.getJSON('falas');
@@ -77,18 +78,17 @@ var cidade = {
         this.cima = this.map.createLayer('cima');
         
         this.cima.resizeWorld();
-        this.interface = new UserInterface(game,400,300);
+        
 
     },
 
     update: function() {
         game.physics.arcade.collide(this.player, this.collidelayer);
         game.physics.arcade.collide(this.player, this.npcs.children[0]);
-        game.physics.arcade.overlap(this.player.children[0], this.npcs.children[0],interacao);//guardas
-        game.physics.arcade.overlap(this.player.children[0], this.npcs.children[1],interacao);//Portas
-        game.physics.arcade.overlap(this.player.children[0], this.npcs.children[2],interacao);//vendedores
 
-        this.interface.Carregar();       
+        game.physics.arcade.overlap(this.player.children[0], this.npcs.children[0],interacao);//guardas
+        game.physics.arcade.overlap(this.player.children[0], this.npcs.children[1],entrada);//Portas
+        game.physics.arcade.overlap(this.player.children[0], this.npcs.children[2],interacao);//vendedores       
        
     },
     render:function()
@@ -106,10 +106,10 @@ var cidade = {
 
 }
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
-// CASA 7 (palacio)
-casa7 = {
+// CASA 8 (palacio)/ /// // /// /// /// /// /// /// 8// 8/// 
+casa8 = {
     preload: function() {
-        game.load.tilemap('casa7', 'data/json/casa7.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('casa8', 'data/json/casa8.json', null, Phaser.Tilemap.TILED_JSON);
 
         game.load.spritesheet('city_inside', 'data/tileds/city_inside.png',32,32);
     
@@ -117,10 +117,11 @@ casa7 = {
     create: function() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.Z);
+        key2 = game.input.keyboard.addKey(Phaser.Keyboard.X);
         tiggerInteracao = true;
         falasJSON = game.cache.getJSON('falas');
         
-        this.map = game.add.tilemap('casa7');
+        this.map = game.add.tilemap('casa8');
 
         this.map.addTilesetImage('city_outside');
         this.map.addTilesetImage('city_inside');   
@@ -138,8 +139,8 @@ casa7 = {
        
         this.player = new Player('hero', 788 ,742);
         // para quando o player sair da casa
-        playerStart.x = 267;
-        playerStart.y = 1143;
+        playerStart.x = 1165;
+        playerStart.y = 965;
         playerStart.frame = 1
 
         this.saida = NpcSaida(this.map,'cidade');
@@ -151,8 +152,7 @@ casa7 = {
 
         //this.cima = this.map.createLayer('cima');
         
-        //this.cima.resizeWorld();
-        this.interface = new UserInterface(game,400,300);
+        //this.cima.resizeWorld();        
 
     },
 
@@ -161,9 +161,6 @@ casa7 = {
         //game.physics.arcade.collide(this.player, this.npcs.children[0]);
         //game.physics.arcade.overlap(this.player.children[0], this.npcs.children[0],interacao);
         game.physics.arcade.overlap(this.player, this.saida,autoInteracao);
-
-        this.interface.Carregar();
-
        
     },
     render:function()
@@ -187,6 +184,7 @@ casa0 = {
     create: function() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.Z);
+        key2 = game.input.keyboard.addKey(Phaser.Keyboard.X);
         tiggerInteracao = true;
         falasJSON = game.cache.getJSON('falas');
         
@@ -221,8 +219,7 @@ casa0 = {
 
         this.cima = this.map.createLayer('cima');
         
-        this.cima.resizeWorld();
-        this.interface = new UserInterface(game,400,300);
+        this.cima.resizeWorld();    
 
     },
 
@@ -232,7 +229,6 @@ casa0 = {
         //game.physics.arcade.overlap(this.player.children[0], this.npcs.children[0],interacao);
         game.physics.arcade.overlap(this.player, this.saida,autoInteracao);
 
-        this.interface.Carregar();
 
        
     },
@@ -253,11 +249,15 @@ casa1 = {
         game.load.tilemap('casa1', 'data/json/casa1.json', null, Phaser.Tilemap.TILED_JSON);
 
         game.load.spritesheet('city_inside', 'data/tileds/city_inside.png',32,32);
+        game.load.image('cadeira', 'data/tileds/cadeira.png');
     
     },
     create: function() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.Z);
+        key2 = game.input.keyboard.addKey(Phaser.Keyboard.X);
+        
+
         tiggerInteracao = true;
         falasJSON = game.cache.getJSON('falas');
         
@@ -265,7 +265,7 @@ casa1 = {
 
         this.map.addTilesetImage('city_outside');
         this.map.addTilesetImage('city_inside');   
-
+        this.map.addTilesetImage('cadeira');   
         this.layer = this.map.createLayer('baixo');
         this.collidelayer = this.map.createLayer('collidelayer');
         
@@ -293,7 +293,6 @@ casa1 = {
         this.cima = this.map.createLayer('cima');
         
         this.cima.resizeWorld();
-        this.interface = new UserInterface(game,400,300);
 
     },
 
@@ -302,8 +301,7 @@ casa1 = {
         //game.physics.arcade.collide(this.player, this.npcs.children[0]);
         //game.physics.arcade.overlap(this.player.children[0], this.npcs.children[0],interacao);
         game.physics.arcade.overlap(this.player, this.saida,autoInteracao);
-
-        this.interface.Carregar();
+    
 
        
     },
